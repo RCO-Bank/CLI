@@ -4,6 +4,8 @@
 
 package com.rcobank.cli.project;
 
+import com.rcobank.cli.project.UI.MenuCLI;
+
 /**
  *
  * @author dev_rco
@@ -11,6 +13,8 @@ package com.rcobank.cli.project;
 public class CliProject {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MenuCLI menu = new MenuCLI();
+        
+        menu.display();
     }
 }
