@@ -4,10 +4,15 @@
  */
 package com.rcobank.cli.project.domain.customer;
 
+import com.rcobank.cli.project.domain.address.Address;
+
 /**
  *
  * @author dev_rco
  */
-public class CustomerBuilder {
-    
+public abstract class CustomerBuilder {
+    protected Integer id;
+    protected String identificationDocument;
+    protected String phoneNumber;
+    protected Address address;    
 }

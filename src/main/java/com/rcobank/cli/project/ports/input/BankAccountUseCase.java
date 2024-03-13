@@ -4,12 +4,15 @@
  */
 package com.rcobank.cli.project.ports.input;
 
+import com.rcobank.cli.project.domain.bankAccount.BankAccount;
+import com.rcobank.cli.project.domain.bankAccount.CreateAnAccountDTO;
+
 /**
  *
  * @author dev_rco
  */
-public interface BankAccountPort {
-    void createAnAccount();
+public interface BankAccountUseCase {
+    void createAnAccount(CreateAnAccountDTO createAnAccount);
     void changeLimit();
     void withdrawMoney();
     void cashDeposit();

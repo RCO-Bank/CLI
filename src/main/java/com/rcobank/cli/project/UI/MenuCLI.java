@@ -5,6 +5,13 @@
 package com.rcobank.cli.project.UI;
 
 import com.rcobank.cli.project.adapters.controllers.BankAccountController;
+import com.rcobank.cli.project.domain.address.AddressBuilder;
+import com.rcobank.cli.project.domain.bankAccount.AccountType;
+import com.rcobank.cli.project.domain.bankAccount.CreateAnAccountDTO;
+import com.rcobank.cli.project.domain.customer.CompanyCustomer;
+import com.rcobank.cli.project.domain.customer.CompanyCustomerBuilder;
+import com.rcobank.cli.project.domain.customer.Customer;
+import com.rcobank.cli.project.domain.customer.CustomerBuilder;
 import com.rcobank.cli.project.ports.input.MenuPort;
 import java.util.Scanner;
 
@@ -56,21 +63,43 @@ public class MenuCLI implements MenuPort {
     }
     
     private void processSelectedOption(MenuOptions option) {
+        System.out.println(option);
         switch (option) {
-            case CREATE_AN_ACCOUNT:
+            case ACCESS_ACCOUNT:
                 this.registerAnAccount();
                 break;
             case EXIT:
                 System.out.println("Finalizando sessão...");
                 break;
             default:
-                System.out.println("Selecione uma opção válida...");;
+                System.out.println("Selecione uma opção válida...");
         }
     }
     
     private void registerAnAccount() {
         System.out.println("-> Iniciar cadastro de conta bancária -<");
-        this.terminalMenuController.createAnAccount();
+        CompanyCustomerBuilder companyCustomerBuilder = new CompanyCustomerBuilder();
+        AddressBuilder addressBuilder = new AddressBuilder();
+        CompanyCustomer companyCustomer = companyCustomerBuilder.addId(1)
+                .addIdentificationDocument("12345678901")
+                .addAddress(
+                        addressBuilder.setCountry("Brasil")
+                        .setDistrict("PI").setCity("Floriano").setNeighborhood("Irapua")
+                        .setComplement("Alguma coisa").setLocationNumber("10").setPublicPlace("64500900")
+                        .build()
+                )
+                .addFantasyName("Loja X")
+                .addCorporateReason("123 alguma coisa LTDA")
+                .build();
+        System.out.println(companyCustomer);
+        CreateAnAccountDTO account = new CreateAnAccountDTO(
+                1,
+                10.0,
+                100.0,
+                AccountType.JOINT_ACCOUNT,
+                companyCustomer
+        );
+        this.terminalMenuController.createAnAccount(account);
     }
 
 }
