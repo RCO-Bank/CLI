@@ -5,10 +5,9 @@
 package com.rcobank.cli.project.adapters.controllers;
 
 import com.rcobank.cli.project.adapters.bankAccount.BankAccountRepositoryInMemoryAdapter;
-import com.rcobank.cli.project.domain.bankAccount.BankAccount;
 import com.rcobank.cli.project.domain.bankAccount.CreateAnAccountDTO;
 import com.rcobank.cli.project.ports.input.BankAccountUseCase;
-import com.rcobank.cli.project.services.AccountService;
+import com.rcobank.cli.project.services.BankAccountService;
 
 /**
  *
@@ -19,7 +18,7 @@ public class BankAccountController {
     private BankAccountUseCase bankAccountUseCase;
     
     public BankAccountController() {
-        this.bankAccountUseCase = AccountService.getInstance(new BankAccountRepositoryInMemoryAdapter());
+        this.bankAccountUseCase = BankAccountService.getInstance(BankAccountRepositoryInMemoryAdapter.getInstance());
     }
   
     public void createAnAccount(CreateAnAccountDTO createAnAccount) {

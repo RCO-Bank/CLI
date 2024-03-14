@@ -50,5 +50,10 @@ public class BankAccount {
     public Customer getCustomer() {
         return customer;
     }
+
+    @Override
+    public String toString() {
+        return "BankAccount{" + "id=" + id + ", agencyNumber=" + agencyNumber + ", balance=" + balance + ", creditLimit=" + creditLimit + ", accountType=" + accountType + ", customer=" + customer + '}';
+    }
     
 }

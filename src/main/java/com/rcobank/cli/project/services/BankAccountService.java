@@ -4,41 +4,46 @@
  */
 package com.rcobank.cli.project.services;
 
-import com.rcobank.cli.project.domain.bankAccount.AccountType;
 import com.rcobank.cli.project.domain.bankAccount.BankAccount;
 import com.rcobank.cli.project.domain.bankAccount.BankAccountBuilder;
 import com.rcobank.cli.project.domain.bankAccount.CreateAnAccountDTO;
 import com.rcobank.cli.project.ports.input.BankAccountUseCase;
 import com.rcobank.cli.project.ports.output.BankAccountRepository;
+import java.util.List;
 
 /**
  *
  * @author dev_rco
  */
-public final class AccountService implements BankAccountUseCase {
-    private static AccountService instance;
+public final class BankAccountService implements BankAccountUseCase {
+    private static BankAccountService instance;
     private BankAccountRepository bankAccountRepository;
     
-    public static AccountService getInstance(BankAccountRepository bankAccountRepository) {
+    public static BankAccountService getInstance(BankAccountRepository bankAccountRepository) {
         if (instance == null) {
-            instance = new AccountService(bankAccountRepository);
+            System.out.println("Nova instância da service");
+            instance = new BankAccountService(bankAccountRepository);
         }
+        System.out.println("Retorna instância da service");
         return instance;
     }
  
-    private AccountService(BankAccountRepository bankAccountRepository) {
+    private BankAccountService(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
     }
     
     @Override
     public void createAnAccount(CreateAnAccountDTO createAnAccount) {
         System.out.println("Service invocando adapter...");
+        // gerar id
+        List<BankAccount> bankAccounts = this.bankAccountRepository.findAll();
         BankAccount bankAccount = new BankAccountBuilder()
-                .setAccountType(AccountType.SALARY_ACCOUNT)
-                .setAgencyNumber(10)
-                .setBalance(250.0)
-                .setCreditLimit(1500.50)
-                .setId(300)
+                .setAccountType(createAnAccount.getAccountType())
+                .setAgencyNumber(createAnAccount.getAgencyNumber())
+                .setBalance(createAnAccount.getBalance())
+                .setCreditLimit(createAnAccount.getCreditLimit())
+                .setCustomer(createAnAccount.getCustomer())
+                .setId(bankAccounts.size()+1)
                 .build();
         this.bankAccountRepository.save(bankAccount);
     }

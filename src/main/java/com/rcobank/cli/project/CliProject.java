@@ -5,6 +5,7 @@
 package com.rcobank.cli.project;
 
 import com.rcobank.cli.project.UI.MenuCLI;
+import com.rcobank.cli.project.config.ApplicationConfig;
 
 /**
  *
@@ -13,6 +14,8 @@ import com.rcobank.cli.project.UI.MenuCLI;
 public class CliProject {
 
     public static void main(String[] args) {
+        ApplicationConfig.initialize();
+        
         MenuCLI menu = new MenuCLI();
         
         menu.display();
