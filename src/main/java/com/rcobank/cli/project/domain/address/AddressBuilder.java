@@ -17,8 +17,9 @@ public class AddressBuilder {
     private String city;
     private String district;
     private String country;
+    private String zipCode;
     
-    public AddressBuilder setPublicPlace(String value) {
+    public AddressBuilder addPublicPlace(String value) {
         this.publicPlace = value;
         return this;
     }
@@ -27,7 +28,7 @@ public class AddressBuilder {
         return this.publicPlace;
     }
     
-    public AddressBuilder setNeighborhood(String value) {
+    public AddressBuilder addNeighborhood(String value) {
         this.neighborhood = value;
         return this;
     }
@@ -36,7 +37,7 @@ public class AddressBuilder {
         return this.neighborhood;
     }
     
-    public AddressBuilder setLocationNumber(String value) {
+    public AddressBuilder addLocationNumber(String value) {
         this.locationNumber = value;
         return this;
     }
@@ -45,7 +46,7 @@ public class AddressBuilder {
         return this.locationNumber;
     }
     
-    public AddressBuilder setComplement(String value) {
+    public AddressBuilder addComplement(String value) {
         this.complement = value;
         return this;
     }
@@ -54,7 +55,7 @@ public class AddressBuilder {
         return this.complement;
     }
     
-    public AddressBuilder setReferencePoint(String value) {
+    public AddressBuilder addReferencePoint(String value) {
         this.referencePoint = value;
         return this;
     }
@@ -63,7 +64,7 @@ public class AddressBuilder {
         return this.referencePoint;
     }
     
-    public AddressBuilder setCity(String value) {
+    public AddressBuilder addCity(String value) {
         this.city = value;
         return this;
     }
@@ -72,7 +73,7 @@ public class AddressBuilder {
         return this.city;
     }
     
-    public AddressBuilder setDistrict(String value) {
+    public AddressBuilder addDistrict(String value) {
         this.district = value;
         return this;
     }
@@ -81,13 +82,22 @@ public class AddressBuilder {
         return this.district;
     }
     
-    public AddressBuilder setCountry(String value) {
+    public AddressBuilder addCountry(String value) {
         this.country = value;
         return this;
     }
     
     public String getCountry() {
         return this.country;
+    }
+
+    public AddressBuilder addZipCode(String value) {
+        this.zipCode = value;
+        return this;
+    }
+    
+    public String getZipCode() {
+        return this.zipCode;
     }
     
     public Address build() {

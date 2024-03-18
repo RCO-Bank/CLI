@@ -15,18 +15,7 @@ import java.util.Optional;
  * @author dev_rco
  */
 public class BankAccountRepositoryInMemoryAdapter implements BankAccountRepository {
-    private static BankAccountRepositoryInMemoryAdapter instance;
     private List<BankAccount> bankAccounts = new ArrayList<>();
-    
-    public static BankAccountRepositoryInMemoryAdapter getInstance() {
-        if (instance == null) {
-            instance = new BankAccountRepositoryInMemoryAdapter();
-        }
-        return instance;
-    }
- 
-    private BankAccountRepositoryInMemoryAdapter() {
-    }
 
     @Override
     public void save(BankAccount bankAccount) {

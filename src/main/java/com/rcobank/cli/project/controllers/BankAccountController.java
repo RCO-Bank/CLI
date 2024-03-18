@@ -2,12 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.rcobank.cli.project.adapters.controllers;
+package com.rcobank.cli.project.controllers;
 
-import com.rcobank.cli.project.adapters.bankAccount.BankAccountRepositoryInMemoryAdapter;
 import com.rcobank.cli.project.domain.bankAccount.CreateAnAccountDTO;
 import com.rcobank.cli.project.ports.input.BankAccountUseCase;
-import com.rcobank.cli.project.services.BankAccountService;
 
 /**
  *
@@ -17,8 +15,8 @@ public class BankAccountController {
 
     private BankAccountUseCase bankAccountUseCase;
     
-    public BankAccountController() {
-        this.bankAccountUseCase = BankAccountService.getInstance(BankAccountRepositoryInMemoryAdapter.getInstance());
+    public BankAccountController(BankAccountUseCase bankAccountService) {
+        this.bankAccountUseCase = bankAccountService;
     }
   
     public void createAnAccount(CreateAnAccountDTO createAnAccount) {

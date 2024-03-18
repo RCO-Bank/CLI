@@ -17,6 +17,7 @@ public class Address {
     private String city;
     private String district;
     private String country;
+    private String zipCode;
     
     public Address(AddressBuilder addressBuilder) {
         this.publicPlace = addressBuilder.getPublicPlace();
@@ -27,6 +28,7 @@ public class Address {
         this.district = addressBuilder.getDistrict();
         this.referencePoint = addressBuilder.getReferencePoint();
         this.locationNumber = addressBuilder.getLocationNumber();
+        this.zipCode = addressBuilder.getZipCode();
     }
 
     public String getPublicPlace() {
@@ -91,6 +93,14 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
     
 }

@@ -5,7 +5,10 @@
 package com.rcobank.cli.project;
 
 import com.rcobank.cli.project.UI.MenuCLI;
-import com.rcobank.cli.project.config.ApplicationConfig;
+import com.rcobank.cli.project.config.DependencyFactory;
+import com.rcobank.cli.project.controllers.BankAccountController;
+import com.rcobank.cli.project.ports.input.BankAccountUseCase;
+import com.rcobank.cli.project.ports.output.CheckZipCodeUseCase;
 
 /**
  *
@@ -14,9 +17,11 @@ import com.rcobank.cli.project.config.ApplicationConfig;
 public class CliProject {
 
     public static void main(String[] args) {
-        ApplicationConfig.initialize();
+        BankAccountUseCase bankAccountUseCase = DependencyFactory.getBankAccountService();
+        CheckZipCodeUseCase checkZipCodeUseCase = DependencyFactory.getZipCodeService();
+        BankAccountController bankAccountController = new BankAccountController(bankAccountUseCase);
         
-        MenuCLI menu = new MenuCLI();
+        MenuCLI menu = new MenuCLI(bankAccountController, checkZipCodeUseCase);
         
         menu.display();
     }

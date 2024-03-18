@@ -16,19 +16,9 @@ import java.util.List;
  * @author dev_rco
  */
 public final class BankAccountService implements BankAccountUseCase {
-    private static BankAccountService instance;
     private BankAccountRepository bankAccountRepository;
-    
-    public static BankAccountService getInstance(BankAccountRepository bankAccountRepository) {
-        if (instance == null) {
-            System.out.println("Nova instância da service");
-            instance = new BankAccountService(bankAccountRepository);
-        }
-        System.out.println("Retorna instância da service");
-        return instance;
-    }
  
-    private BankAccountService(BankAccountRepository bankAccountRepository) {
+    public BankAccountService(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
     }
     
