@@ -22,26 +22,6 @@ public class CompanyCustomerBuilder extends CustomerBuilder {
         return fantasyName;
     }
     
-    public CompanyCustomerBuilder addId(Integer value) {
-        this.id = value;
-        return this;
-    }
-    
-    public CompanyCustomerBuilder addIdentificationDocument(String value) {
-        this.identificationDocument = value;
-        return this;
-    }
-    
-    public CompanyCustomerBuilder addPhoneNumber(String value) {
-        this.phoneNumber = value;
-        return this;
-    }
-    
-    public CompanyCustomerBuilder addAddress(Address value) {
-        this.address = value;
-        return this;
-    }
-    
     public CompanyCustomerBuilder addCorporateReason(String value) {
         this.corporateReason = value;
         return this;

@@ -12,8 +12,6 @@ import com.rcobank.cli.project.domain.customer.Customer;
  */
 public class CreateAnAccountDTO {
     private Number agencyNumber;
-    private Double balance;
-    private Double creditLimit;
     private AccountType accountType;
     private Customer customer;
 
@@ -23,22 +21,6 @@ public class CreateAnAccountDTO {
 
     public void setAgencyNumber(Number agencyNumber) {
         this.agencyNumber = agencyNumber;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public Double getCreditLimit() {
-        return creditLimit;
-    }
-
-    public void setCreditLimit(Double creditLimit) {
-        this.creditLimit = creditLimit;
     }
 
     public AccountType getAccountType() {
@@ -57,10 +39,8 @@ public class CreateAnAccountDTO {
         this.customer = customer;
     }
 
-    public CreateAnAccountDTO(Number agencyNumber, Double balance, Double creditLimit, AccountType accountType, Customer customer) {
+    public CreateAnAccountDTO(Number agencyNumber, AccountType accountType, Customer customer) {
         this.agencyNumber = agencyNumber;
-        this.balance = balance;
-        this.creditLimit = creditLimit;
         this.accountType = accountType;
         this.customer = customer;
     }

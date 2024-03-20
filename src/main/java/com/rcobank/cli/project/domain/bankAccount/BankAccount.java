@@ -5,6 +5,7 @@
 package com.rcobank.cli.project.domain.bankAccount;
 
 import com.rcobank.cli.project.domain.customer.Customer;
+import com.rcobank.cli.project.domain.customer.CustomerType;
 
 /**
  *
@@ -22,9 +23,9 @@ public class BankAccount {
         this.id = bankAccountBuilder.getId();
         this.accountType = bankAccountBuilder.getAccountType();
         this.agencyNumber = bankAccountBuilder.getAgencyNumber();
-        this.balance = bankAccountBuilder.getBalance();
-        this.creditLimit = bankAccountBuilder.getCreditLimit();
+        this.balance = 0.0;
         this.customer = bankAccountBuilder.getCustomer();
+        this.creditLimit = this.customer.getKind() == CustomerType.PF ? 150.0 : 1000;
     }
 
     public Number getId() {

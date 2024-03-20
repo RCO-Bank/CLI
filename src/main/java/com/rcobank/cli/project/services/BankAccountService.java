@@ -25,13 +25,13 @@ public final class BankAccountService implements BankAccountUseCase {
     @Override
     public void createAnAccount(CreateAnAccountDTO createAnAccount) {
         System.out.println("Service invocando adapter...");
+        BankAccountBuilder bankAccountBuilder = new BankAccountBuilder();
+
         // gerar id
         List<BankAccount> bankAccounts = this.bankAccountRepository.findAll();
-        BankAccount bankAccount = new BankAccountBuilder()
+        BankAccount bankAccount = bankAccountBuilder
                 .setAccountType(createAnAccount.getAccountType())
                 .setAgencyNumber(createAnAccount.getAgencyNumber())
-                .setBalance(createAnAccount.getBalance())
-                .setCreditLimit(createAnAccount.getCreditLimit())
                 .setCustomer(createAnAccount.getCustomer())
                 .setId(bankAccounts.size()+1)
                 .build();

@@ -50,8 +50,8 @@ public class ZipCode {
 
     @Override
     public String toString() {
-        return "ZipCode [federativeUnit=" + federativeUnit + ", city=" + city + ", code=" + code + ", neighborhood="
-                + neighborhood + ", publicPlace=" + publicPlace + "]";
+        return "Endereço [UF=" + federativeUnit + ", cidade=" + city + ", cep=" + code + ", bairro="
+                + neighborhood + ", logradouro=" + publicPlace + "]";
     }
     
 }

@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import com.google.gson.Gson;
 
-import com.rcobank.cli.project.domain.address.Address;
 import com.rcobank.cli.project.domain.zipCode.AddressViaCep;
 import com.rcobank.cli.project.domain.zipCode.ZipCode;
 import com.rcobank.cli.project.domain.zipCode.ZipCodeBuilder;
@@ -34,17 +31,9 @@ public class ZipCodeAdapter implements CheckZipCodePort {
         return gson.fromJson(response.toString(), AddressViaCep.class);
     }
 
-    private void exibirEndereco(String enderecoJSON) {
-        // Aqui você pode fazer o parsing do JSON e exibir os dados do endereço conforme necessário
-        System.out.println("Endereço retornado: ");
-        System.out.println(enderecoJSON);
-    }
-
     @Override
     public ZipCode consult(String zipCode) throws IOException {
         AddressViaCep address = this.getAddress(zipCode);
-
-        System.out.println(address);
 
         return this.mapAddress(address);
     }

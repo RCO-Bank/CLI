@@ -13,10 +13,10 @@ public class CompanyCustomer extends Customer {
     private String fantasyName;
 
     public CompanyCustomer(CompanyCustomerBuilder customerBuilder) {
-        this.setId(customerBuilder.id);
-        this.setIdentificationDocument(customerBuilder.identificationDocument);
-        this.setAddress(customerBuilder.address);
-        this.setPhoneNumber(customerBuilder.phoneNumber);
+        this.setId(customerBuilder.getId());
+        this.setIdentificationDocument(customerBuilder.getIdentificationDocument());
+        this.setAddress(customerBuilder.getAddress());
+        this.setPhoneNumber(customerBuilder.getPhoneNumber());
         this.corporateReason = customerBuilder.getCorporateReason();
         this.fantasyName = customerBuilder.getFantasyName();
     }

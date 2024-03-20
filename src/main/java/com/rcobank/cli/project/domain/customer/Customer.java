@@ -15,6 +15,7 @@ public abstract class Customer {
     private String identificationDocument;
     private String phoneNumber;
     private Address address;
+    private CustomerType kind;
 
     public Integer getId() {
         return id;
@@ -47,5 +48,15 @@ public abstract class Customer {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public CustomerType getKind() {
+        return kind;
+    }
+
+    public void setKind(CustomerType kind) {
+        this.kind = kind;
+    }
+
+    
     
 }
